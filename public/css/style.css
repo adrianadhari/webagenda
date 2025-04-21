@@ -1,0 +1,337 @@
+/* =====================font google================ */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+/* =============globals============== */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --primary: #78B3CE;
+    --secondary: #F96E2A;
+    --tertiary: #FBF8EF;
+    --background: #C9E6F0;
+    --white: #ffffff;
+    --gray: #686868;
+    --black: #000000;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+}
+
+/* =============== Navigation ================ */
+.navigation {
+    position: fixed;
+    width: 250px;
+    height: 100%;
+    background: var(--primary);
+    border-left: 10px solid var(--primary);
+    transition: 0.5s;
+    overflow: hidden;
+}
+.navigation.active {
+    width: 80px;
+}
+
+.navigation ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.navigation ul li {
+    position: relative;
+    width: 100%;
+    list-style: none;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.navigation ul li:hover,
+.navigation ul li.hovered {
+    background-color: var(--background);
+}
+
+.navigation ul li:nth-child(1) {
+    margin-bottom: 40px;
+    pointer-events: none;
+}
+
+.navigation ul li a {
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: var(--white);
+    font-size: 500;
+    font-weight: bold;
+}
+.navigation ul li:hover a,
+.navigation ul li.hovered a {
+    color: var(--secondary);
+}
+
+.navigation ul li a .icon {
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 75px;
+    text-align: center;
+}
+
+.navigation ul li a .icon img {
+    margin-left: 23px;
+}
+
+.navigation ul li a .icon ion-icon {
+    font-size: 1.75rem;
+}
+
+.navigation ul li a .title {
+    position: relative;
+    display: block;
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    text-align: start;
+    white-space: nowrap;
+    font-weight: bold;
+}
+
+.navigation ul li:nth-child(1) .title {
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+/* --------- curve outside ---------- */
+.navigation ul li:hover a::before,
+.navigation ul li.hovered a::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: -50px;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border-radius: 50%;
+    box-shadow: 35px 35px 0 10px var(--background);
+    pointer-events: none;
+}
+.navigation ul li:hover a::after,
+.navigation ul li.hovered a::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -50px;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border-radius: 50%;
+    box-shadow: 35px -35px 0 10px var(--background);
+    pointer-events: none;
+}
+
+/* ===================== Main ===================== */
+.main {
+    position: absolute;
+    width: calc(100% - 250px);
+    left: 250px;
+    min-height: 100vh;
+    background: var(--background);
+    transition: 0.5s;
+}
+.main.active {
+    width: calc(100% - 80px);
+    left: 80px;
+}
+
+.topbar {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    background-color: var(--primary);
+}
+
+.topbar .toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    cursor: pointer;
+    color: var(--white);
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    box-shadow: none;
+}
+
+.topbar .toggle:focus,
+.topbar .toggle:active {
+    outline: none;
+    box-shadow: none;
+}
+
+#dropdown-icon {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    color: var(--white);
+    cursor: pointer;
+    font-size: 1.2rem;
+    outline: none;
+    box-shadow: none;
+}
+
+#dropdown-icon:focus,
+#dropdown-icon:active {
+    outline: none;
+    box-shadow: none;
+}
+
+.topbar .topbar-text {
+    display: flex;
+    justify-content: flex-start;
+    padding: 20px;
+    align-items: center;
+    flex-grow: 1;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--white);
+}
+
+.topbar .user {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: var(--white);
+}
+
+.topbar .user ion-icon {
+    font-size: 2.5rem;
+    margin-right: 10px;
+}
+
+.topbar .user .user-text {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+/* Dropdown Logout */
+.user {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.administrator-text {
+    color: var(--white);
+    font-size: 1rem;
+    margin-right: 5px;
+}
+
+.dropdown-logout {
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+}
+
+.dropdown-logout ion-icon {
+    font-size: 1.2rem;
+    color: var(--white);
+    padding-top: 5px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--white);
+    min-width: 120px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 0;
+    padding: 8px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-content ion-icon {
+    font-size: 1.2rem;
+    color: var(--secondary);
+    margin-right: 8px;
+    margin-bottom: 5px;
+}
+
+.logout-text {
+    color: var(--black);
+    font-size: 0.9rem;
+}
+
+
+/* ======================= Cards ====================== */
+.cardBox {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+}
+
+.cardBox .card {
+    position: relative;
+    background: var(--white);
+    padding: 30px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.cardBox .card .numbers {
+    position: relative;
+    font-weight: 500;
+    font-size: 48px;
+    font-weight: bold;
+    color: var(--black);
+}
+
+.cardBox .card .cardName {
+    color: var(--gray);
+    font-size: 24px;
+    margin-top: 5px;
+}
+
+.cardBox .card .iconBox {
+    font-size: 3.5rem;
+    color: var(--secondary);
+}
+
+.cardBox .card:hover {
+    background: var(--secondary);
+}
+.cardBox .card:hover .numbers,
+.cardBox .card:hover .cardName,
+.cardBox .card:hover .iconBox {
+    color: var(--white);
+}

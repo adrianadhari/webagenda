@@ -94,14 +94,18 @@
             </a>
         </li>
 
-        <li>
-            <a href="{{ route('user') }}">
-                <span class="icon">
-                    <ion-icon name="person-circle"></ion-icon>
-                </span>
-                <span class="title">User</span>
-            </a>
-        </li>
+        @auth
+        @if (auth()->user()->type === 'Superadmin' || auth()->user()->type === 'superadmin' || auth()->user()->type === 'Admin')
+            <li>
+                <a href="{{ route('user') }}">
+                    <span class="icon">
+                        <ion-icon name="person-circle"></ion-icon>
+                    </span>
+                    <span class="title">User</span>
+                </a>
+            </li>
+        @endif
+    @endauth
 
         <li>
             <a href="settings">

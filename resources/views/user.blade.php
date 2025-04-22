@@ -76,6 +76,9 @@
                                         <option value="Superadmin"
                                             {{ isset($user) && $user->type == 'Superadmin' ? 'selected' : '' }}>
                                             Superadmin</option>
+                                        <option value="Admin"
+                                            {{ isset($user) && $user->type == 'Admin' ? 'selected' : '' }}>
+                                            Admin</option>
                                         <option value="Operator"
                                             {{ isset($user) && $user->type == 'Operator' ? 'selected' : '' }}>Operator
                                         </option>

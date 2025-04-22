@@ -20,6 +20,7 @@ Route::get('logActivity', 'HomeController@logActivity');
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\SuperadminMiddleware;
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
@@ -59,11 +60,14 @@ Route::get('/cancel', function () {
     return view('cancel');
 });
 
-Route::get('/user', [UserController::class, 'index'])->name('user');
-Route::post('/user', [UserController::class, 'store'])->name('storeUser');
-Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
-Route::post('/user/update/{id}', [UserController::class, 'update'])->name('user.update');
-Route::get('/user/delete/{id}', [UserController::class, 'destroy'])->name('user.delete');
+Route::middleware(['auth', SuperadminMiddleware::class])->group(function () {
+    Route::get('/user', [UserController::class, 'index'])->name('user');
+    Route::post('/user', [UserController::class, 'store'])->name('storeUser');
+    Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
+    Route::post('/user/update/{id}', [UserController::class, 'update'])->name('user.update');
+    Route::get('/user/delete/{id}', [UserController::class, 'destroy'])->name('user.delete');
+});
+
 
 Route::get('/laporan', function () {
     return view('laporan');
